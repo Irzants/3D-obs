@@ -4,15 +4,27 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    // Start is called before the first frame update
+
+    //movespeed variables
+    [SerializeField] float moveSpeed = 5f;
+
     void Start()
     {
         
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
-        
+        MovePlayer();
+
     }
+
+    void MovePlayer()
+    {
+        float x = Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime; //side move
+        float z = Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime; //forwaad move
+        transform.Translate(x, 0f, z);
+    }
+
 }
